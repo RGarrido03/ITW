@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="Author" content="Rúben Garrido"/>
+    <meta name="Description" content="Aula prática 3 de ITW"/>
+    <title>ITW - Aula03 - Ex. 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="ex3.css" rel="stylesheet">
+</head>
+<body>
+    <!--Acessibilidade não verificada. Corrigir isso, mais tarde.-->
+    <div style="width: 90%; margin: auto;">
+        <h1>Formulário de informação pessoal</h1>
+        <form name="PersonData" action="http://192.168.160.36/FormEcho.aspx" method="post">
+            <input type="hidden" name="FormName" value="UserForm" />
+            <dl>
+                <fieldset>
+                    <legend>Informação pessoal</legend>
+
+                    <dt>Curso:</dt>
+                    <dd>
+                        <select name="Curso">
+                            <option value="LEI" selected="selected">Licenciatura em Engenharia Informática</option>
+                            <option value="MIECT">Mestrado Integrado em Engenharia de Computadores e Telemática</option>
+                            <option value="MIEET">Mestrado Integrado em Engenharia Eletrónica e Telecomunicações</option>
+                            <option value="Other">Outro</option>
+                        </select>
+                    </dd>
+
+                    <dt>Nome:</dt>
+                    <dd>
+                        <input type="text" name="FirstName" placeholder="Nome"/>
+                    </dd>
+
+                    <dt>Apelido:</dt>
+                    <dd>
+                        <input type="text" name="LastName" placeholder="Apelido" />
+                    </dd>
+
+                    <dt>Palavra-passe:</dt>
+                    <dd>
+                        <input type="password" name="Password" placeholder="Digite a palavra-passe"/>
+                    </dd>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Comentários</legend>
+                    <textarea name="Comments" rows="4" cols="80" placeholder="Insira os seus comentários"></textarea>
+                </fieldset>
+                
+                <div class="row">
+                    <fieldset class="half">
+                        <legend>Meio de transporte preferido</legend>
+                        <input type="checkbox" name="vehicle" value="Bicicleta">Bicicleta<br/>
+                        <input type="checkbox" name="vehicle" value="Carro">Carro<br/>
+                        <input type="checkbox" name="vehicle" value="Comboio">Comboio<br/>
+                        <input type="checkbox" name="vehicle" value="Avião">Avião
+                    </fieldset>
+                    <p class="gap"></p>
+                    <fieldset class="half">
+                        <legend>Cor preferida</legend>
+                        <input type="radio" name="color" value="Azul">Azul<br/>
+                        <input type="radio" name="color" value="Verde">Verde<br/>
+                        <input type="radio" name="color" value="Vermelho">Vermelho<br/>
+                        <input type="radio" name="color" value="Outra">Outra
+                    </fieldset>
+                </div>
+
+                <div class="buttonarea">
+                    <input class="button" name="Button" type="Submit" />
+                    <input class="button" type="reset" name="resetBtn" value="Reset" />
+                </div>
+            </dl>
+        </form>
+    </div>
+</body>
+</html>

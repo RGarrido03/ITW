@@ -1,0 +1,85 @@
+/* Font */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* General */
+fieldset {
+    border: solid #777777 1px;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    font-weight: bold;
+}
+
+/* Informação pessoal */
+dt {
+    float: left;
+    clear: left;
+    width: 18%;
+    height: 30px;
+    display: inline-flexbox;
+}
+
+dd {
+    float: left;
+    margin: 0;
+    width: 80%;;
+}
+select {
+    width:101%;
+    height: 1.85rem;
+    margin: 0.2rem;
+    border-radius: 0.25rem;
+    border:solid 1px darkgray;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    height: 1.6rem;
+    margin: 0.2rem;
+    border-radius: 0.25rem;
+    border:solid 1px darkgray;
+}
+
+/* Comentários */
+textarea {
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 0.25rem;
+    width: 100%;
+    border: none
+}
+
+/* Meio de transporte e cor preferida */
+input[type=checkbox],input[type=radio] {
+    margin: 0.4rem;
+}
+
+/* Two collumn container */
+.row {
+    display: flex;
+}
+
+.half {
+    flex: 50%;
+}
+
+.gap{
+    flex: 1.5rem;
+}
+
+/* Buttons */
+.buttonarea {
+    text-align: center;
+}
+
+input[class=button] {
+    width: 85px;
+    height: 35px;
+}
+
+input[type=submit] {
+    font-weight: 700;
+}
