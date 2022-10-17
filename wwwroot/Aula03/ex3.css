@@ -1,9 +1,14 @@
 /* Font */
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', Tahoma, Verdana, 'Segoe UI', sans-serif;
 }
 
 /* General */
+.main {
+    width: 90%;
+    margin: auto;
+}
+
 fieldset {
     border: solid #777777 1px;
     border-radius: 0.5rem;
@@ -20,7 +25,10 @@ dt {
     clear: left;
     width: 18%;
     height: 30px;
-    display: inline-flexbox;
+    display: flexbox;
+    align-content: center;
+    line-height: 30px;
+    
 }
 
 dd {
@@ -29,7 +37,7 @@ dd {
     width: 80%;;
 }
 select {
-    width:101%;
+    width:100%;
     height: 1.85rem;
     margin: 0.2rem;
     border-radius: 0.25rem;

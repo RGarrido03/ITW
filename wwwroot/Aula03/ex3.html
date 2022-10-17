@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="PT">
 <head>
     <meta charset="utf-8" />
     <meta name="Author" content="Rúben Garrido"/>
@@ -7,22 +7,24 @@
     <title>ITW - Aula03 - Ex. 3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="ex3.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
+    <link rel="stylesheet" href="ex3.css">
 </head>
 <body>
-    <!--Acessibilidade não verificada. Corrigir isso, mais tarde.-->
-    <div style="width: 90%; margin: auto;">
+    <div class="main">
         <h1>Formulário de informação pessoal</h1>
+
         <form name="PersonData" action="http://192.168.160.36/FormEcho.aspx" method="post">
             <input type="hidden" name="FormName" value="UserForm" />
             <dl>
                 <fieldset>
                     <legend>Informação pessoal</legend>
 
-                    <dt>Curso:</dt>
+                    <dt>
+                        <label for="Curso">Curso:</label>
+                    </dt>
                     <dd>
-                        <select name="Curso">
+                        <select id="Curso" name="Curso">
                             <option value="LEI" selected="selected">Licenciatura em Engenharia Informática</option>
                             <option value="MIECT">Mestrado Integrado em Engenharia de Computadores e Telemática</option>
                             <option value="MIEET">Mestrado Integrado em Engenharia Eletrónica e Telecomunicações</option>
@@ -30,42 +32,54 @@
                         </select>
                     </dd>
 
-                    <dt>Nome:</dt>
+                    <dt>
+                        <label for="FirstName">Nome:</label>
+                    </dt>
                     <dd>
-                        <input type="text" name="FirstName" placeholder="Nome"/>
+                        <input type="text" name="FirstName" id="FirstName" placeholder="Nome"/>
                     </dd>
 
-                    <dt>Apelido:</dt>
+                    <dt><label for="LastName">Apelido:</label></dt>
                     <dd>
-                        <input type="text" name="LastName" placeholder="Apelido" />
+                        <input type="text" name="LastName" id="LastName" placeholder="Apelido" />
                     </dd>
 
-                    <dt>Palavra-passe:</dt>
+                    <dt><label for="Password">Palavra-passe:</label></dt>
                     <dd>
-                        <input type="password" name="Password" placeholder="Digite a palavra-passe"/>
+                        <input type="password" name="Password" id="Password" placeholder="Digite a palavra-passe"/>
                     </dd>
                 </fieldset>
 
                 <fieldset>
-                    <legend>Comentários</legend>
-                    <textarea name="Comments" rows="4" cols="80" placeholder="Insira os seus comentários"></textarea>
+                    <legend><label for="Comments">Comentários</label></legend>
+                    <textarea id="Comments" name="Comments" rows="4" cols="80" placeholder="Insira os seus comentários"></textarea>
                 </fieldset>
                 
                 <div class="row">
                     <fieldset class="half">
                         <legend>Meio de transporte preferido</legend>
-                        <input type="checkbox" name="vehicle" value="Bicicleta">Bicicleta<br/>
-                        <input type="checkbox" name="vehicle" value="Carro">Carro<br/>
-                        <input type="checkbox" name="vehicle" value="Comboio">Comboio<br/>
-                        <input type="checkbox" name="vehicle" value="Avião">Avião
+                        <label title="Veículo de duas rodas com pedais">
+                            <input type="checkbox" name="vehicle" value="Bicicleta">Bicicleta<br/>
+                        </label>
+                        <label title="Veículo pessoal, de quatro rodas">
+                            <input type="checkbox" name="vehicle" value="Carro">Carro
+                            <br/>
+                        </label>
+                        <label title="Transporte público movido a eletricidade, numa estrutura metálica">
+                            <input type="checkbox" name="vehicle" value="Comboio">Comboio
+                            <br/>
+                        </label>
+                        <label title="Transporte aéreo">
+                            <input type="checkbox" name="vehicle" value="Avião">Avião
+                        </label>
                     </fieldset>
                     <p class="gap"></p>
                     <fieldset class="half">
                         <legend>Cor preferida</legend>
-                        <input type="radio" name="color" value="Azul">Azul<br/>
-                        <input type="radio" name="color" value="Verde">Verde<br/>
-                        <input type="radio" name="color" value="Vermelho">Vermelho<br/>
-                        <input type="radio" name="color" value="Outra">Outra
+                        <label title="#0000FF"><input type="radio" name="color" value="Azul">Azul<br/></label>
+                        <label title="#00FF00"><input type="radio" name="color" value="Verde">Verde<br/></label>
+                        <label title="#FF0000"><input type="radio" name="color" value="Vermelho">Vermelho<br/></label>
+                        <label title="Outra cor"><input type="radio" name="color" value="Outra">Outra</label>
                     </fieldset>
                 </div>
 
