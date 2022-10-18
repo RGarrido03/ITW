@@ -1,0 +1,101 @@
+body {
+    color:#1b1b1b;
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:0;
+}
+
+.top {
+    width: 100%;
+    height: 50px;
+    margin: auto;
+    background-color:antiquewhite;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+li:last-child {
+    border-right: none;
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #444;
+}
+
+li a.active:hover {
+    color: #444;
+}
+
+.active {
+    background-color: #5CAF50;
+}
+
+.banner {
+    width: 94%;
+    height: 300px;
+    background-image: url('https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/12/Gradient_builder_2.jpg?auto=format&q=60&w=1815&h=1200&fit=crop&crop=faces');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:3% 3% 0% 3%;
+    border-radius: 0.5rem;
+}
+
+.title {
+    line-height: 300px;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    color:#1b1b1b;
+}
+
+.caixa {
+    width: 100%;
+    margin: auto;
+}
+
+.content {
+    width: 58%;
+    min-height: 400px;
+    background: linear-gradient(135deg, rgba(224,205,205,1) 0%, rgba(196,164,164,1) 100%);;
+    float: left;
+    padding: 3%;
+    margin:3% 1.5% 3% 3%;
+    border-radius: 0.5rem;
+}
+
+.advertising {
+    width: 21%;
+    padding:3%;
+    margin:3% 3% 3% 1.5%;
+    min-height: 563px;
+    background: linear-gradient(155deg, rgb(219, 192, 205),rgb(221, 174, 196));
+    float: left;
+    border-radius: 0.5rem;
+}
+
+.footer {
+    width: 100%;
+    margin: auto;
+    padding-left:3%;
+    clear: both;
+}
