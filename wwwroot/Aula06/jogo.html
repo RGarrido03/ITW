@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game</title>
+
+  <!-- FontAwesome 6.2.0 CSS -->
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet"
+    type="text/css" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+
+  <style>
+    .box {
+      height: 4rem;
+      width: 4rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header" class="container mt-3">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <h1>JavaScript Game</h1>
+        <button class="btn btn-primary px-3" onclick="shuffle()">Shuffle</button>
+        <p id="text" class="me-3 mb-0 d-none">Color:<br>px, px</p>
+      </div>
+    </nav>
+    <hr>
+  </div>
+
+  <div id="Red" onmouseenter="showDetails('Red')" onmouseleave="hideDetails()" class="box rounded bg-danger"></div>
+  <div id="Green" onmouseenter="showDetails('Green')" onmouseleave="hideDetails()" class="box rounded bg-success"></div>
+  <div id="Yellow" onmouseenter="showDetails('Yellow')" onmouseleave="hideDetails()" class="box rounded bg-warning">
+  </div>
+  <div id="Blue" onmouseenter="showDetails('Blue')" onmouseleave="hideDetails()" class="box rounded bg-primary"></div>
+
+
+  <!-- Bootstrap script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var red = document.getElementById("Red");
+    var green = document.getElementById("Green");
+    var yellow = document.getElementById("Yellow");
+    var blue = document.getElementById("Blue");
+    var colors = [red, green, yellow, blue];
+    var header = document.getElementById("header");
+
+    var ww = parseInt(window.innerWidth); // Window width
+    var wh = parseInt(window.innerHeight); // Window height
+    var hh = parseInt(header.offsetHeight); // Header height
+    var cs = parseInt(red.offsetHeight); // Color size (determined by height)
+
+    var text = document.getElementById("text");
+
+
+    function shuffle() {
+      for (var i = 0; i <= 3; i++) {
+        // Set position:absolute; css
+        if (colors[i].style.position != "absolute") {
+          colors[i].style.position = "absolute";
+        }
+
+        // Randomize color position
+        var cl = Math.floor(Math.random() * (ww - cs)); // Left
+        var ct = Math.floor(Math.random() * (wh - hh - cs)) + hh; // Top
+
+        // Set color position
+        colors[i].style.left = cl + "px";
+        colors[i].style.top = ct + "px";
+      }
+    }
+    shuffle()
+
+
+    function showDetails(color_name) {
+      var color = document.getElementById(color_name);
+      var color_top = parseInt(color.style.top.slice(0, -2)) + cs / 2;
+      var color_left = parseInt(color.style.left.slice(0, -2)) + cs / 2;
+
+      text.innerHTML = `${color_name}:<br>${color_left}px, ${color_top}px`;
+      text.classList.remove('d-none');
+    }
+
+
+    function hideDetails() {
+      text.classList.add('d-none');
+    }
+
+
+    function refit() {
+      var new_wh = parseInt(window.innerHeight);
+      var new_ww = parseInt(window.innerWidth);
+
+      var prop_width = new_ww / ww;
+      var prop_height = new_wh / wh;
+
+      for (var i = 0; i <= 3; i++) {
+        var cl = parseInt(colors[i].style.left.slice(0, -2));
+        var ct = parseInt(colors[i].style.top.slice(0, -2));
+
+        cl = ((cl + cs) * prop_width) - cs;
+        ct = ((ct + cs + hh) * prop_height) - cs - hh;
+
+        // Set color position
+        colors[i].style.left = cl + "px";
+        colors[i].style.top = ct + "px";
+      }
+
+      ww = new_ww;
+      wh = new_wh;
+    }
+    window.addEventListener('resize', refit);
+  </script>
+</body>
+
+</html>

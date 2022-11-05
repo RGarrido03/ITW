@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora</title>
+  <script>
+    function calcula() {
+      var x = document.getElementById("op1");
+      var op = document.getElementById("op");
+      var y = document.getElementById("op2");
+      var res = document.getElementById("res");
+
+      var x_value = parseFloat(x.value)
+      var y_value = parseFloat(y.value)
+      
+      if (op.value == 1) {
+        res.value = x_value + y_value;
+      }
+      else if (op.value == 2) {
+        res.value = x_value - y_value;
+      }
+      else if (op.value == 3) {
+        res.value = x_value * y_value;
+      }
+      else if (op.value == 4) {
+        if (y_value != 0) {
+          res.value = x_value / y_value;
+        }
+        else {
+          res.value = "Cannot divide by 0";
+        }
+      }
+      else if (op.value == 5) {
+        res.value = x_value % y_value;
+      }
+      else if (op.value == 6) {
+        if (x_value >= 0) {
+          var factorial = 1;
+          for (i = x_value; i>0; i--) {
+            factorial = factorial * i;
+          }
+          res.value = factorial
+        }
+        else {
+          res.value = "Cannot factorize negative numbers";
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome 6.2.0 CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+
+<body class="p-5">
+  <h1 class="mb-3"><i class="fas fa-calculator"></i> Calculadora</h1>
+  <div class="row">
+    <div class="col-3">
+      <input type="text" class="form-control" id="op1" value="2" />
+    </div>
+    <div class="col-3">
+      <select class="form-select" id="op">
+        <option selected value="1">Soma</option>
+        <option value="2">Subtração</option>
+        <option value="3">Multiplicação</option>
+        <option value="4">Divisão</option>
+        <option value="5">Resto da divisão</option>
+        <option value="6">Factorial</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <input id="op2" class="form-control" value="3" />
+    </div>
+    <div class="col-3">
+      <input id="res" class="form-control" value="" />
+    </div>
+    <br/>
+  </div>
+  <button type="button" class="btn btn-primary mt-3" onclick="calcula()">Calcular</button>
+
+  <!-- Bootstrap script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
