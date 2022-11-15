@@ -1,0 +1,155 @@
+﻿<!-- DISCLAIMER: This HTML lacks label vertical alignment -->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW - teste prático 10 2022/23</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="teste10.css" />
+</head>
+<body>
+    <div class="banner"></div>
+    <div class="container mt-4">
+        <h2 class="border-bottom pb-3">Cálculo da média</h2>
+        <form action="http://192.168.160.36/FormEcho.aspx" method="POST">
+            <div class="row">
+                <div class="row form-group">
+                    <div class="col-2"><label for="fld_1" class="col-form-label">Nome</label></div>
+                    <div class="col-10"><input class="form-control" type="text" id="fld_1" value="Ana Maria de Sousa" name="fld_1" /></div>
+                </div>
+                <div class="invalid-feedback">
+                    <div class="" id="fld_1_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tamanho mínimo do nome: 2 palavras</div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="row form-group">
+                    <div class="col-2"><label for="field_2" class="form-label">Data de nascimento</label></div>
+                    <div class="col-4"><input class="form-control" type="date" id="field_2" value="03/12/1990" name="field_2" /></div>
+                </div>
+                <div class="">
+                    <div class="d-none text-danger col-form-label" id="field_2_Error1"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma data.</div>
+                    <div class="d-none text-danger col-form-label" id="field_2_Error2"><i class="fa fa-exclamation-triangle"></i> Erro: O utilizador tem de ter mais de 18 anos.</div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" onclick="showTab('home-tab')" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informação das Notas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="report-tab" onclick="showTab('report-tab')" data-toggle="tab" href="#report" role="tab" aria-controls="report" aria-selected="false">Relatório das Médias</a>
+                </li>
+            </ul>
+            <div class="mt-3" id="myTabContent">
+                <div class="" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-2"><label for="field_3" class="">Notas nas disciplinas</label></div>
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-9"><label for="field_30" class="form-label">Álgebra Linear e Geometria Analítica</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_30" name="field_30" /></div>
+                                    <div class="d-none text-danger col-form-label" id="field_30_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"><label for="field_31" class="form-label">Elementos de Física</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_31" name="field_31" /></div>
+                                    <div class="d-none text-danger col-form-label" id="field_31_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"><label for="field_32" class="form-label">Cálculo I</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_32" name="field_32" /></div>
+                                    <div class="d-none text-danger col-form-label" id="field_32_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"><label for="field_33" class="form-label">Introdução às Tecnologias Web</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_33" name="field_33" /></div>
+                                    <div class="d-none text-danger col-form-label" id="field_33_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"><label for="field_34" class="form-label">Fundamentos de Programação</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_34" name="field_34" /></div><br>
+                                    <div class="d-none text-danger col-form-label" id="field_34_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-9"><label for="field_35" class="form-label">Modelação e Análise de Sistemas</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_35" name="field_35" /></div>
+                                    <div class="d-none text-danger col-form-label" id="field_35_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"><label for="field_36" class="form-label">Cálculo II</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_36" name="field_36" /></div>
+                                    <div class="d-none text-danger col-form-label" id="field_36_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"><label for="field_37" class="form-label">Matemática Discreta</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_37" name="field_37" /></div>
+                                    <div class="d-none text-danger col-form-label" id="field_37_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"><label for="field_38" class="form-label">Introdução à Arquitetura de Computadores</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_38" name="field_38" /></div>
+                                    <div class="d-none text-danger col-form-label" id="field_38_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"><label for="field_39" class="form-label">Programação Orientada a Objetos</label><br></div>
+                                    <div class="col-3"><input class="form-control" type="text" id="field_39" name="field_39" /></div>
+                                    <div class="d-none text-danger col-form-label" id="field_39_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de inserir uma nota entre 0 e 20.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-10 mt-3">
+                            <div class="d-none text-danger col-form-label" id="fld_all_Error"><i class="fa fa-exclamation-triangle"></i> Erro: Tem de lançar as notas em todas as disciplinas</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-none" id="report" role="tabpanel" aria-labelledby="report-tab">
+                    <div class="">
+                        <div class="row g-0">
+                            <div class="col-3">Média do 1º Semestre</div>
+                            <div class="col-1"><input disabled class="form-control" type="text" id="avg_1" name="avg_1" readonly /></div>
+                            <div class="col-3"><span class="">&nbsp; valores.</span></div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row g-0">
+                            <div class="col-3">Média do 2º Semestre</div>
+                            <div class="col-1"><input disabled class="form-control" type="text" id="avg_2" name="avg_2" readonly /></div>
+                            <div class="col-3"><span class="">&nbsp; valores.</span></div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row g-0">
+                            <div class="col-3">Média Total</div>
+                            <div class="col-1"><input disabled class="form-control" type="text" id="avg_total" name="avg_total" readonly /></div>
+                            <div class="col-3"><span class="">&nbsp; valores.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="text-center">
+                <div class="btn-group">
+                    <input type="button" value="Calcular" class="btn btn-outline-primary" onclick="return calcular()" />
+                    <input type="submit" value="Enviar" class="btn btn-outline-success" onclick="return enviar()" />
+                    <input type="reset" value="Limpar" class="btn btn-outline-danger" onclick="limpar()" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <p></p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="teste10.js"></script>
+</body>
+</html>

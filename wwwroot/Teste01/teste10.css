@@ -1,0 +1,13 @@
+﻿/* TODO: escrever o código em falta aqui... */
+body {
+    font-family: 'Open Sans';
+}
+
+.banner {
+    height: 420px;
+    margin: auto;
+    background-image: url('Batman-Who-Laughs-Robins-Cover.webp');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
