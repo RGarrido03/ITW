@@ -9,7 +9,7 @@
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
-                //--- Há partida, está tudo bem
+                //--- À partida, está tudo bem
                 var failed = false;
                 //--- Se não houver nenhum transporte selecionado, failed = true (falhou!)
                 var checkboxes = document.getElementsByName("transport");

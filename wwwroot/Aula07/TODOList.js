@@ -7,8 +7,8 @@
     else {
         //--- Adiciona uma nova linha ao elemento <div id="tasks"></div>
         document.getElementById('tasks').innerHTML += '<div class="input-group mb-1">' +
-            '<span class="form-control form-control-sm">' + newTask + '</span>' +
-            '<button class="btn btn-danger btn-sm input-group-text"><i class="fa fa-trash-o"></i></button>' +
+            '<span class="form-control">' + newTask + '</span>' +
+            '<button class="btn btn-danger input-group-text"><i class="fa-solid fa-trash"></i></button>' +
             '</div>';
         //--- Procura por todos os lementos que posssuam a classe btn-danger (.btn-danger)
         var current_tasks = document.querySelectorAll(".btn-danger");
@@ -19,6 +19,6 @@
             }
         }
         //--- Limpa a caixa de criação de novas tarefas
-        document.getElementById('newtaskId').value = "";
+        document.getElementById('newtask').value = "";
     }
 }
