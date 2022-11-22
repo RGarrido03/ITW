@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Concertos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet"
+    type="text/css" />
+  <style>
+    .banner {
+      height: 0;
+      padding-top: 30%;
+      margin: auto;
+      background-image: url('https://www.longlivemontero.com/dist/img/favicon.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner"></div>
+  <div class="container mt-3">
+    <h1 class="mb-3">Long Live Montero Tour tickets</h1>
+    <form action="http://192.168.160.36/FormEcho.aspx" method="POST">
+      <div class="row g-3">
+
+        <!-- Name -->
+        <div class="col-sm-12 col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control bg-light" id="name" name="name" placeholder="Name">
+            <label for="name">Name</label>
+            <div id="name-error" class="text-danger mt-1 mb-3">It must have 10 to 100 characters.</div>
+          </div>
+        </div>
+
+        <!-- E-mail address -->
+        <div class="col-sm-12 col-md-6">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control bg-light" id="email" name="email" placeholder="name@example.com">
+            <label for="email">E-mail address</label>
+            <div id="email-error" class="text-danger mt-1 mb-3">Provide a valid e-mail address.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row g-3">
+        <!-- Address -->
+        <div class="col-sm-12 col-md-6">
+          <div class="form-floating mb-md-3">
+            <textarea type="text" class="form-control bg-light" id="address" name="address"
+              placeholder="Name"></textarea>
+            <label for="address">Address</label>
+            <div id="address-error" class="text-danger mt-1 mb-3">It must have 20 to 200 characters.</div>
+          </div>
+        </div>
+
+        <!-- Place -->
+        <div class="col-sm-12 col-md-6 mb-3">
+          <div class="border rounded bg-light p-3">
+            <div class="row form-group" id="place">
+              <label class="col-form-label">Places (choose only two)</label>
+              <div class="col">
+                <div class="form-check mb-1">
+                  <input class="form-check-input" name="place" type="checkbox" value="100" id="front">
+                  <label class="form-check-label" for="front">
+                    Grass (front) - 100€
+                  </label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" name="place" type="checkbox" value="80" id="back">
+                  <label class="form-check-label" for="back">
+                    Grass (back) - 80€
+                  </label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" name="place" type="checkbox" value="50" id="side">
+                  <label class="form-check-label" for="side">
+                    Side bench - 50€
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" name="place" type="checkbox" value="65" id="middle">
+                  <label class="form-check-label" for="middle">
+                    Middle bench - 65€
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="place-error" class="text-danger mt-1">Choose two options.</div>
+        </div>
+      </div>
+
+      <!-- Maximum price -->
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control bg-light" id="max-price" name="max-price" placeholder="0">
+        <label for="floatingInput">Maximum price</label>
+        <div id="max-price-error" class="text-danger mt-1">Provide a positive number.</div>
+      </div>
+
+      <!-- Botões -->
+      <div class="text-center">
+        <button type="submit" id="submit-button" class="btn btn-success">
+          <i class="fa-solid fa-paper-plane"></i>
+          &nbsp;Send
+        </button>
+        &nbsp;
+        <button type="reset" class="btn btn-outline-danger">
+          <i class="fa-regular fa-trash"></i>
+          &nbsp;Reset
+        </button>
+      </div>
+
+    </form>
+  </div>
+  <script src="../lib/jquery/dist/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#address").height($("#place").height());
+      $("#max-price-error").hide();
+      $("#name-error").hide();
+      $("#email-error").hide();
+      $("#address-error").hide();
+      $("#place-error").hide();
+      $("#submit-button").addClass("disabled");
+
+      function checkSubmitButton() {
+        if ($("#max-price-error").is(":hidden") &&
+          $("#name-error").is(":hidden") &&
+          $("#email-error").is(":hidden") &&
+          $("#address-error").is(":hidden") &&
+          $("#place-error").is(":hidden") &&
+          $("#name").val() != "" &&
+          $("#email").val() != "" &&
+          $("#address").val() != "" &&
+          $("#place input:checked").length == 2 &&
+          $("#max-price").val() != "") {
+          $("#submit-button").removeClass("disabled");
+        } else {
+          $("#submit-button").addClass("disabled");
+        }
+      }
+
+      $("#max-price").on("input", function () {
+        if ($(this).val() < 0 || $(this).val() == "" || isNaN($(this).val())) {
+          $("#max-price-error").show();
+          $("#max-price").addClass("is-invalid");
+        } else {
+          $("#max-price-error").hide();
+          $("#max-price").removeClass("is-invalid");
+        }
+        checkSubmitButton();
+      });
+
+      $("#name").on("input", function () {
+        if ($(this).val().length < 10 || $(this).val().length > 100) {
+          $("#name-error").show();
+          $("#name").addClass("is-invalid");
+        } else {
+          $("#name-error").hide();
+          $("#name").removeClass("is-invalid");
+        }
+        checkSubmitButton();
+      });
+
+      $("#email").on("input", function () {
+        if (!$(this).val().includes("@") || !$(this).val().includes(".")) {
+          $("#email-error").show();
+          $("#email").addClass("is-invalid");
+        } else {
+          $("#email-error").hide();
+          $("#email").removeClass("is-invalid");
+        }
+        checkSubmitButton();
+      });
+
+      $("#address").on("input", function () {
+        if ($(this).val().length < 20 || $(this).val().length > 200) {
+          $("#address-error").show();
+          $("#address").addClass("is-invalid");
+        } else {
+          $("#address-error").hide();
+          $("#address").removeClass("is-invalid");
+        }
+        checkSubmitButton();
+      });
+
+      $("#place").on("change", function () {
+        if ($("input[type=checkbox]:checked").length != 2) {
+          $("#place-error").show();
+        } else {
+          $("#place-error").hide();
+        }
+        checkSubmitButton();
+      });
+    });
+  </script>
+</body>
+
+</html>
