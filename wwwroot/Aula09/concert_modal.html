@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Concertos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet"
+    type="text/css" />
+  <style>
+    .banner {
+      height: 0;
+      padding-top: 30%;
+      margin: auto;
+      background-image: url('https://www.longlivemontero.com/dist/img/favicon.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner"></div>
+  <div class="container mt-3">
+    <h1 class="mb-3">Long Live Montero Tour tickets</h1>
+    <form action="http://192.168.160.36/FormEcho.aspx" method="POST">
+      <div class="row g-3">
+
+        <!-- Name -->
+        <div class="col-sm-12 col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control bg-light" id="name" name="name" placeholder="Name">
+            <label for="name">Name</label>
+          </div>
+        </div>
+
+        <!-- E-mail address -->
+        <div class="col-sm-12 col-md-6">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control bg-light" id="email" name="email" placeholder="name@example.com">
+            <label for="email">E-mail address</label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row g-3">
+        <!-- Address -->
+        <div class="col-sm-12 col-md-6">
+          <div class="form-floating mb-md-3">
+            <textarea type="text" class="form-control bg-light" id="address" name="address"
+              placeholder="Name"></textarea>
+            <label for="address">Address</label>
+          </div>
+        </div>
+
+        <!-- Place -->
+        <div class="col-sm-12 col-md-6 mb-3">
+          <div class="border rounded bg-light p-3">
+            <div class="row form-group" id="place">
+              <label class="col-form-label">Places (choose only two)</label>
+              <div class="col">
+                <div class="form-check mb-1">
+                  <input class="form-check-input" name="place" type="checkbox" value="100" id="front">
+                  <label class="form-check-label" for="front">
+                    Grass (front) - 100€
+                  </label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" name="place" type="checkbox" value="80" id="back">
+                  <label class="form-check-label" for="back">
+                    Grass (back) - 80€
+                  </label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" name="place" type="checkbox" value="50" id="side">
+                  <label class="form-check-label" for="side">
+                    Side bench - 50€
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" name="place" type="checkbox" value="65" id="middle">
+                  <label class="form-check-label" for="middle">
+                    Middle bench - 65€
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maximum price -->
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control bg-light" id="max-price" name="max-price" placeholder="0">
+        <label for="floatingInput">Maximum price</label>
+      </div>
+
+      <!-- Botões -->
+      <div class="text-center">
+        <button type="button" id="send-to-modal-button" class="btn btn-success" data-bs-toggle="modal"
+          data-bs-target="#confirmModal">
+          <i class="fa-solid fa-paper-plane"></i>
+          &nbsp;Send
+        </button>
+        &nbsp;
+        <button type="reset" class="btn btn-outline-danger">
+          <i class="fa-regular fa-trash"></i>
+          &nbsp;Reset
+        </button>
+      </div>
+
+      <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="confirmModalLabel">Confirm data</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+              <button type="button" id="close-button" class="btn btn-danger" data-bs-dismiss="modal">
+                <i class="fa-solid fa-xmark"></i>
+                &nbsp;Close
+              </button>
+              <button type="submit" id="submit-button" class="btn btn-success">
+                <i class="fa-solid fa-paper-plane"></i>
+                &nbsp;Send
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../lib/jquery/dist/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#address").height($("#place").height());
+
+      function validateForm() {
+        var html = "";
+        if ($("#name").val() == "") {
+          html += "<li>Name is required.</li>";
+        }
+        else if ($("#name").val().length < 10 || $("#name").val().length > 100) {
+          html += "<li>Name must have between 10 and 100 characters.</li>";
+        }
+
+        if ($("#email").val() == "") {
+          html += "<li>E-mail is required.</li>";
+        }
+        else if (!$("#email").val().includes("@") || !$("#email").val().includes(".")) {
+          html += "<li>Input a valid e-mail address.</li>";
+        }
+
+        if ($("#address").val() == "") {
+          html += "<li>Address is required.</li>";
+        }
+        else if ($("#address").val().length < 20 || $("#address").val().length > 200) {
+          html += "<li>Address must have between 20 and 200 characters.</li>";
+        }
+
+        if ($("input[name='place']:checked").length == 0) {
+          html += "<li>Choose at least one place.</li>";
+        }
+        else if ($("input[name='place']:checked").length != 2) {
+          html += "<li>Choose two places.</li>";
+        }
+
+        if ($("#max-price").val() == "") {
+          html += "<li>Maximum price is required.</li>";
+        }
+        else if (isNaN($("#max-price").val())) {
+          html += "<li>Maximum price must be a number.</li>";
+        }
+        else if ($("#max-price").val() < 0) {
+          html += "<li>Maximum price must be greater than 0.</li>";
+        }
+
+        if (html == "") {
+          html += "<p>Do you want to send this form?<br><b>You can't change your ticket data after this operation.</b></p>";
+          $("#submit-button").show();
+          $("#close-button").hide();
+        }
+        else {
+          $("#close-button").show();
+          $("#submit-button").hide();
+        }
+
+        $("#modal-body").html(html);
+      }
+
+      $("#send-to-modal-button").on('click',validateForm);
+    });
+  </script>
+</body>
+
+</html>
