@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>jQuery Weather Test</title>
+  <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet"
+    type="text/css" />
+</head>
+
+<body>
+  <div class="container mt-3">
+    <h1 class="mb-3">
+      <i class="fa-duotone fa-sun"></i>
+      Weather
+    </h1>
+    <select id="citySelector" class="form-select" data-bind="event:{change:cityChanged}">
+      <option value="">Select a city name</option>
+      <option value="Aveiro, PT">Aveiro</option>
+      <option value="Porto, PT">Porto</option>
+      <option value="Paris, FR">Paris</option>
+      <option value="London, UK">Londres</option>
+      <option value="New York, USA">Nova Iorque</option>
+    </select>
+    <table class="table table-striped mt-3" data-bind="with: weatherInfo">
+      <tr>
+        <td class="col-xs-2 fw-bold">City Name:</td>
+        <td class="col-xs-10" id="cityName">
+          <span data-bind="text: name"></span>,<span data-bind="text: sys.country"></span>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2 fw-bold">Coordinates:</td>
+        <td class="col-xs-10" id="coordinates" data-bind="with:coord">Lon: <span data-bind="text:lon.toFixed(3)"></span>º, Lat: <span data-bind="text:lat.toFixed(3)"></span>º</td>
+      </tr>
+      <tr>
+        <td class="col-xs-2 fw-bold">Weather:</td>
+        <td class="col-xs-10" id="weather" data-bind="with : weather[0]">
+          <img data-bind="attr:{src:'http://openweathermap.com/img/wn/' + icon + '.png'}" />
+          <span data-bind="text: description"></span>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2 fw-bold">Temperature:</td>
+        <td class="col-xs-10" id="temp" data-bind="with:main">
+          <span data-bind="text: (temp - 273.15).toFixed(2)"></span>
+          ºC
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2 fw-bold">Wind:</td>
+        <td class="col-xs-10" id="wind" data-bind="with:wind"><span data-bind="text: speed"></span> km/h</td>
+      </tr>
+      <tr>
+        <td class="col-xs-2 fw-bold">Pressure:</td>
+        <td class="col-xs-10" id="pressure" data-bind="with:main"><span data-bind="text: pressure"></span> hPa</td>
+      </tr>
+      <tr>
+        <td class="col-xs-2 fw-bold">Humidity:</td>
+        <td class="col-xs-10" id="humidity" data-bind="with:main"><span data-bind="text: humidity"></span>%</td>
+      </tr>
+      <tr>
+        <td class="col-xs-2 fw-bold">API data:</td>
+        <td class="col-xs-10">
+          <pre id="allData"><span data-bind="text: ko.toJSON($root, null, 2)"></span></pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <script src="../lib/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+  <script src="weather.js"></script>
+
+</body>
